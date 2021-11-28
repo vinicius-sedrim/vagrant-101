@@ -1,0 +1,17 @@
+# Application servers
+ [frontend]
+ servidorA       ansible_host=172.17.177.40 #Definindo variavel no IP do server
+
+ [backend]
+ servidorB       ansible_host=172.17.177.40
+
+ # Group 'multi' with all servers - Ou seja criação de subgrupos
+ [multi:children]
+ backend
+ frontend
+ 
+
+ # Variables that will be applied to all servers
+ [multi:vars]
+ ansible_ssh_user=vagrant
+ ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
